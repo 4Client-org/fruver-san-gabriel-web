@@ -5,99 +5,183 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fruver San Gabriel - Productos frescos a tu puerta</title>
 <meta name="description" content="Fruver San Gabriel - Venta de frutas, verduras y abarrotes en Itagüí, Antioquia. Domicilios y atención al cliente.">
+<link rel="icon" type="image/jpeg" href="logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { display: ['Poppins', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+        colors: {
+          forest: { 50:'#f1f8f3', 100:'#dcefe1', 200:'#b8dfc4', 300:'#8bc99f', 400:'#5cae78',
+                     500:'#3a9159', 600:'#297445', 700:'#1f5c37', 800:'#1b4a2e', 900:'#173e27' },
+          gold: { 400:'#f2b84a', 500:'#e6a530' },
+        },
+        boxShadow: { soft: '0 10px 40px -10px rgba(23,62,39,0.25)' },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  h1, h2, h3, .font-display { font-family: 'Poppins', sans-serif; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp .7s ease-out both; }
+  .fade-up-1 { animation-delay: .05s; }
+  .fade-up-2 { animation-delay: .15s; }
+  .fade-up-3 { animation-delay: .25s; }
+  .blob { filter: blur(60px); }
+</style>
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
+  <header id="site-header" class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-shadow">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-green-700 text-white font-bold text-lg">FG</span>
-        <span class="text-xl font-extrabold text-green-800 tracking-tight">Fruver San Gabriel</span>
-      </div>
-      <nav class="hidden sm:flex items-center gap-8 text-sm font-medium text-gray-600">
-        <a href="#inicio" class="hover:text-green-700 transition-colors">Inicio</a>
-        <a href="#nosotros" class="hover:text-green-700 transition-colors">Nosotros</a>
-        <a href="#contacto" class="hover:text-green-700 transition-colors">Contacto</a>
+      <a href="#inicio" class="flex items-center gap-2.5">
+        <img src="logo.jpeg" alt="Fruver San Gabriel" class="w-10 h-10 rounded-xl object-cover shadow-soft">
+        <span class="text-xl font-display font-extrabold text-forest-800 tracking-tight">Fruver San Gabriel</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-9 text-sm font-semibold text-gray-500">
+        <a href="#inicio" class="hover:text-forest-700 transition-colors">Inicio</a>
+        <a href="#nosotros" class="hover:text-forest-700 transition-colors">Nosotros</a>
+        <a href="#contacto" class="hover:text-forest-700 transition-colors">Contacto</a>
       </nav>
-      <a href="#contacto" class="hidden sm:inline-block bg-green-700 hover:bg-green-800 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">Contáctanos</a>
+      <div class="flex items-center gap-3">
+        <a href="#contacto" class="hidden sm:inline-flex bg-forest-700 hover:bg-forest-800 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-soft transition-colors">
+          Contáctanos
+        </a>
+        <button id="menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600" aria-label="Abrir menú">
+          <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-6 py-4 flex flex-col gap-4 text-sm font-semibold text-gray-600">
+      <a href="#inicio" class="hover:text-forest-700">Inicio</a>
+      <a href="#nosotros" class="hover:text-forest-700">Nosotros</a>
+      <a href="#contacto" class="hover:text-forest-700">Contacto</a>
     </div>
   </header>
 
   <!-- Hero -->
-  <section id="inicio" class="bg-gradient-to-b from-green-50 to-white">
-    <div class="max-w-6xl mx-auto px-6 py-20 sm:py-28 text-center">
-      <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full mb-6 uppercase tracking-wide">Itagüí, Antioquia</span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-        Fruver San Gabriel<br class="hidden sm:block">
-        <span class="text-green-700">Productos frescos a tu puerta</span>
+  <section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-forest-50 via-white to-white">
+    <div class="blob absolute -top-24 -left-24 w-96 h-96 bg-forest-200/60 rounded-full"></div>
+    <div class="blob absolute top-10 -right-32 w-[28rem] h-[28rem] bg-gold-400/30 rounded-full"></div>
+    <div class="relative max-w-6xl mx-auto px-6 pt-20 pb-24 sm:pt-28 sm:pb-32 text-center">
+      <span class="fade-up inline-flex items-center gap-2 bg-white border border-forest-200 text-forest-700 text-xs font-bold px-4 py-1.5 rounded-full mb-7 uppercase tracking-wider shadow-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-forest-500"></span> Itagüí, Antioquia
+      </span>
+      <h1 class="fade-up fade-up-1 text-4xl sm:text-6xl font-display font-extrabold text-gray-900 tracking-tight leading-[1.1]">
+        Fruver San Gabriel<br>
+        <span class="bg-gradient-to-r from-forest-600 to-forest-800 bg-clip-text text-transparent">Productos frescos a tu puerta</span>
       </h1>
-      <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600">
+      <p class="fade-up fade-up-2 mt-7 max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed">
         Somos un negocio local dedicado a la venta de frutas, verduras y abarrotes de calidad,
         con servicio de domicilios para que tengas siempre lo mejor de la cosecha sin salir de casa.
       </p>
-      <div class="mt-10 flex items-center justify-center gap-4">
-        <a href="#contacto" class="bg-green-700 hover:bg-green-800 text-white font-semibold px-6 py-3 rounded-lg shadow-sm transition-colors">
+      <div class="fade-up fade-up-3 mt-10 flex items-center justify-center gap-4 flex-wrap">
+        <a href="#contacto" class="bg-forest-700 hover:bg-forest-800 text-white font-semibold px-7 py-3.5 rounded-full shadow-soft transition-all hover:-translate-y-0.5">
           Contáctanos
         </a>
-        <a href="tel:+573024100351" class="bg-white border border-gray-300 hover:border-green-700 text-gray-700 hover:text-green-700 font-semibold px-6 py-3 rounded-lg transition-colors">
+        <a href="tel:+573024100351" class="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-forest-600 text-gray-700 hover:text-forest-700 font-semibold px-7 py-3.5 rounded-full transition-all hover:-translate-y-0.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           Llamar ahora
         </a>
+      </div>
+
+      <!-- imagen de marca -->
+      <div class="fade-up fade-up-3 mt-16 flex justify-center">
+        <img src="logo.jpeg" alt="Fruver San Gabriel - frutas y verduras frescas"
+          class="w-64 h-64 sm:w-72 sm:h-72 rounded-3xl object-cover shadow-soft border-4 border-white ring-1 ring-gray-100">
       </div>
     </div>
   </section>
 
   <!-- Nosotros -->
-  <section id="nosotros" class="max-w-6xl mx-auto px-6 py-20">
-    <div class="grid sm:grid-cols-3 gap-8 text-center">
-      <div class="p-6">
-        <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center text-green-700 text-xl">🍎</div>
-        <h3 class="font-bold text-gray-900 mb-2">Frutas frescas</h3>
-        <p class="text-sm text-gray-600">Selección diaria de fruta fresca de la mejor calidad.</p>
+  <section id="nosotros" class="max-w-6xl mx-auto px-6 py-24">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-forest-600 font-bold text-sm uppercase tracking-wider">Nosotros</span>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-display font-extrabold text-gray-900">Calidad y frescura, todos los días</h2>
+      <p class="mt-4 text-gray-600 leading-relaxed">
+        Trabajamos para llevar hasta tu hogar productos frescos y de calidad, con un servicio cercano
+        y atención personalizada a cada cliente.
+      </p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="group bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:shadow-soft transition-all hover:-translate-y-1">
+        <div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-forest-100 flex items-center justify-center text-2xl group-hover:bg-forest-700 group-hover:text-white transition-colors">🍎</div>
+        <h3 class="font-display font-bold text-gray-900 mb-2">Frutas frescas</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Selección diaria de fruta fresca de la mejor calidad.</p>
       </div>
-      <div class="p-6">
-        <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center text-green-700 text-xl">🥬</div>
-        <h3 class="font-bold text-gray-900 mb-2">Verduras</h3>
-        <p class="text-sm text-gray-600">Verduras frescas seleccionadas para tu mesa todos los días.</p>
+      <div class="group bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:shadow-soft transition-all hover:-translate-y-1">
+        <div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-forest-100 flex items-center justify-center text-2xl group-hover:bg-forest-700 group-hover:text-white transition-colors">🥬</div>
+        <h3 class="font-display font-bold text-gray-900 mb-2">Verduras</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Verduras frescas seleccionadas para tu mesa todos los días.</p>
       </div>
-      <div class="p-6">
-        <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center text-green-700 text-xl">🛒</div>
-        <h3 class="font-bold text-gray-900 mb-2">Abarrotes</h3>
-        <p class="text-sm text-gray-600">Productos de la canasta básica con entrega a domicilio.</p>
+      <div class="group bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:shadow-soft transition-all hover:-translate-y-1">
+        <div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-forest-100 flex items-center justify-center text-2xl group-hover:bg-forest-700 group-hover:text-white transition-colors">🛒</div>
+        <h3 class="font-display font-bold text-gray-900 mb-2">Abarrotes</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">Productos de la canasta básica con entrega a domicilio.</p>
       </div>
     </div>
   </section>
 
   <!-- Legal y Contacto -->
-  <section id="contacto" class="bg-gray-50 border-y border-gray-200">
-    <div class="max-w-4xl mx-auto px-6 py-20">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-extrabold text-gray-900">Información Legal y de Contacto</h2>
-        <p class="mt-3 text-gray-600">Datos oficiales de nuestro negocio.</p>
+  <section id="contacto" class="relative bg-forest-900 overflow-hidden">
+    <div class="blob absolute bottom-0 right-0 w-96 h-96 bg-forest-700/40 rounded-full"></div>
+    <div class="relative max-w-5xl mx-auto px-6 py-24">
+      <div class="text-center mb-12">
+        <span class="text-gold-400 font-bold text-sm uppercase tracking-wider">Contacto</span>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-display font-extrabold text-white">Información Legal y de Contacto</h2>
+        <p class="mt-3 text-forest-200">Datos oficiales de nuestro negocio.</p>
       </div>
 
-      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
-        <dl class="divide-y divide-gray-200">
-          <div class="grid sm:grid-cols-3 gap-1 sm:gap-4 px-6 py-5">
-            <dt class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Razón Social</dt>
-            <dd class="sm:col-span-2 text-lg font-bold text-gray-900">FRUVER SAN GABRIEL S.A.S.</dd>
+      <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <dl class="divide-y divide-gray-100">
+          <div class="flex items-start gap-4 px-7 py-6">
+            <span class="w-10 h-10 flex-shrink-0 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01"/></svg>
+            </span>
+            <div>
+              <dt class="text-xs font-bold text-gray-400 uppercase tracking-wide">Razón Social</dt>
+              <dd class="mt-0.5 text-lg font-display font-bold text-gray-900">FRUVER SAN GABRIEL S.A.S.</dd>
+            </div>
           </div>
-          <div class="grid sm:grid-cols-3 gap-1 sm:gap-4 px-6 py-5">
-            <dt class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Dirección Comercial</dt>
-            <dd class="sm:col-span-2 text-lg font-bold text-gray-900">Cl. 36 # 69D - 28, Itagüí, Antioquia, Colombia</dd>
+          <div class="flex items-start gap-4 px-7 py-6">
+            <span class="w-10 h-10 flex-shrink-0 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </span>
+            <div>
+              <dt class="text-xs font-bold text-gray-400 uppercase tracking-wide">Dirección Comercial</dt>
+              <dd class="mt-0.5 text-lg font-display font-bold text-gray-900">Cl. 36 # 69D - 28, Itagüí, Antioquia, Colombia</dd>
+            </div>
           </div>
-          <div class="grid sm:grid-cols-3 gap-1 sm:gap-4 px-6 py-5">
-            <dt class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Teléfono Oficial</dt>
-            <dd class="sm:col-span-2 text-lg font-bold text-gray-900">
-              <a href="tel:+573024100351" class="hover:text-green-700">302 410 0351</a>
-            </dd>
+          <div class="flex items-start gap-4 px-7 py-6">
+            <span class="w-10 h-10 flex-shrink-0 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </span>
+            <div>
+              <dt class="text-xs font-bold text-gray-400 uppercase tracking-wide">Teléfono Oficial</dt>
+              <dd class="mt-0.5 text-lg font-display font-bold text-gray-900">
+                <a href="tel:+573024100351" class="hover:text-forest-700 transition-colors">302 410 0351</a>
+              </dd>
+            </div>
           </div>
-          <div class="grid sm:grid-cols-3 gap-1 sm:gap-4 px-6 py-5">
-            <dt class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Correo Electrónico</dt>
-            <dd class="sm:col-span-2 text-lg font-bold text-gray-900">
-              <a href="mailto:fruversangabrieldomicilios@gmail.com" class="hover:text-green-700">fruversangabrieldomicilios@gmail.com</a>
-            </dd>
+          <div class="flex items-start gap-4 px-7 py-6">
+            <span class="w-10 h-10 flex-shrink-0 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </span>
+            <div>
+              <dt class="text-xs font-bold text-gray-400 uppercase tracking-wide">Correo Electrónico</dt>
+              <dd class="mt-0.5 text-lg font-display font-bold text-gray-900">
+                <a href="mailto:fruversangabrieldomicilios@gmail.com" class="hover:text-forest-700 transition-colors break-all">fruversangabrieldomicilios@gmail.com</a>
+              </dd>
+            </div>
           </div>
         </dl>
       </div>
@@ -105,23 +189,50 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300">
-    <div class="max-w-6xl mx-auto px-6 py-10">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div class="flex items-center gap-2">
-          <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-green-700 text-white font-bold text-sm">FG</span>
-          <span class="font-bold text-white">Fruver San Gabriel</span>
+  <footer class="bg-forest-950 bg-gray-950 text-gray-400">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        <div class="flex items-center gap-2.5">
+          <img src="logo.jpeg" alt="Fruver San Gabriel" class="w-9 h-9 rounded-xl object-cover">
+          <span class="font-display font-bold text-white">Fruver San Gabriel</span>
         </div>
-        <p class="text-sm text-gray-400">© <span id="year">2026</span> Fruver San Gabriel S.A.S. Todos los derechos reservados.</p>
+        <nav class="flex items-center gap-6 text-sm font-medium">
+          <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
+          <a href="#nosotros" class="hover:text-white transition-colors">Nosotros</a>
+          <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
+        </nav>
+        <p class="text-sm text-gray-500">© <span id="year">2026</span> Fruver San Gabriel S.A.S. Todos los derechos reservados.</p>
       </div>
-      <p class="mt-6 text-xs text-gray-500 max-w-3xl leading-relaxed border-t border-gray-800 pt-6">
-        <strong class="text-gray-400">Aviso de Privacidad:</strong> Protegemos tus datos personales conforme a la normativa vigente.
+      <p class="mt-8 text-xs text-gray-500 max-w-3xl leading-relaxed border-t border-gray-800 pt-6">
+        <strong class="text-gray-300">Aviso de Privacidad:</strong> Protegemos tus datos personales conforme a la normativa vigente.
         La información de contacto que nos compartes (nombre, teléfono, dirección) se usa exclusivamente para gestionar tus pedidos
         y domicilios, y no se comparte con terceros sin tu autorización.
       </p>
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('shadow-md', window.scrollY > 8);
+    });
+
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    menuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden', !isHidden);
+      iconClose.classList.toggle('hidden', isHidden);
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }));
+  </script>
 </body>
 </html>
